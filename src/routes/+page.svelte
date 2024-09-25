@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>MTV</title>
+	<title>MTV-Movies</title>
 	<meta name="description" content="MTV" />
 </svelte:head>
 
