@@ -1,17 +1,3 @@
-<!-- <script>
-	import { onMount } from 'svelte';
-	import BackArrow from '$lib/components/BackArrow.svelte';
-	import MovList from '$lib/components/MovList.svelte';
-	
-	
-	let data = [];
-	onMount(async () => {
-		const addr = 'http://10.0.4.41:8080/superheros';
-		const res = await fetch(addr);
-		data = await res.json();
-		data = data;
-	});
-</script> -->
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
@@ -20,53 +6,46 @@
 	let ws;
 	let data = [];
 
-	// Function to initialize WebSocket connection
 	function initWebSocket() {
-		const wsuri = "ws://10.0.4.41:8765";
+		const wsuri = 'ws://10.0.4.41:8765';
 		ws = new WebSocket(wsuri);
-		console.log("WebSocket connection created: " + wsuri);
+		console.log('WebSocket connection created: ' + wsuri);
 
-		ws.onopen = function() {
-			console.log("WebSocket connection opened: " + wsuri);
-			// You can send a message or perform an action when the connection opens
-			ws.send(JSON.stringify({ "command": "superheros" }));
+		ws.onopen = function () {
+			console.log('WebSocket connection opened: ' + wsuri);
+			ws.send(JSON.stringify({ command: 'superheros' }));
 		};
 
-		ws.onmessage = function(event) {
-			// console.log("Message received from server: ", event.data);
-			// Handle incoming messages from the server
+		ws.onmessage = function (event) {
 			data = JSON.parse(event.data);
-			console.log("Message received from server: ", data);
+			console.log('Message received from server: ', data);
 		};
 
-		ws.onclose = function() {
-			console.log("WebSocket connection closed");
+		ws.onclose = function () {
+			console.log('WebSocket connection closed');
 		};
 
-		ws.onerror = function(error) {
-			console.error("WebSocket error: ", error);
+		ws.onerror = function (error) {
+			console.error('WebSocket error: ', error);
 		};
 	}
 
-	// Initialize WebSocket connection when the component is mounted
 	onMount(() => {
-		console.log("Component mounted");
+		console.log('Component mounted');
 		initWebSocket();
 	});
 
-	// Clean up WebSocket connection when the component is destroyed
 	onDestroy(() => {
 		if (ws) {
 			ws.close();
 		}
 	});
 </script>
+
 <main>
 	<BackArrow path="/" />
 	<h1>Super Heroes</h1>
-	
 	<MovList {data} />
-	
 </main>
 
 <style>

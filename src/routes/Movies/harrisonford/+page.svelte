@@ -7,31 +7,27 @@
 	let data = [];
 
 	function initWebSocket() {
-		const wsuri = 'ws://10.0.4.41:8765';
+		const wsuri = "ws://10.0.4.41:8765";
 		ws = new WebSocket(wsuri);
-		console.log('WebSocket connection created: ' + wsuri);
+		console.log("WebSocket connection created: " + wsuri);
 
-		ws.onopen = function () {
-			console.log('WebSocket connection opened: ' + wsuri);
-			ws.send(JSON.stringify({ command: 'tremors' }));
+		ws.onopen = function() {
+			console.log("WebSocket connection opened: " + wsuri);
+			ws.send(JSON.stringify({ "command": "harrisonford" }));
 		};
 
-		ws.onmessage = function (event) {
+		ws.onmessage = function(event) {
 			data = JSON.parse(event.data);
-			console.log('Message received from server: ', data);
+			console.log("Message received from server: ", data);
 		};
 
-		ws.onclose = function () {
-			console.log('WebSocket connection closed');
-		};
-
-		ws.onerror = function (error) {
-			console.error('WebSocket error: ', error);
+		ws.onerror = function(error) {
+			console.error("WebSocket error: ", error);
 		};
 	}
 
 	onMount(() => {
-		console.log('Component mounted');
+		console.log("Component mounted");
 		initWebSocket();
 	});
 
@@ -41,10 +37,9 @@
 		}
 	});
 </script>
-
 <main>
 	<BackArrow path="/" />
-	<h1>Tremors</h1>
+	<h1>Harrison Ford</h1>
 	<MovList {data} />
 </main>
 
