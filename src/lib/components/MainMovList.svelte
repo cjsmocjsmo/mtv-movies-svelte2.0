@@ -43,6 +43,7 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/transformers"><p class="mov">Transformers</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/tremors"><p class="mov">Tremors</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/therock"><p class="mov">The Rock</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/vandam"><p class="mov">VanDam</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/xmen"><p class="mov">XMen</p></a>
 </div>
 
