@@ -9,7 +9,12 @@
 
 <main>
 	<h1>MTV Movies</h1>	
-	<a href="http://10.0.4.54:8091/"><h3>TvShows</h3></a>
+
+	<div class="fuck">
+		<a href="http://10.0.4.54:8091/"><h3>TvShows</h3></a>
+		<a href="http://10.0.4.39:9090/"><h3>Music</h3></a>
+	</div>
+	
 	<div>
 		<MainMovList />
 	</div>
@@ -22,6 +27,16 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+	}
+	.fuck {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex: 0.6;
+	}
+	h3 {
+		margin: 1em;
 	}
 	h1 {
 		color: yellowgreen;

@@ -1,12 +1,17 @@
 <script>
 	import './styles.css';
 
+	const wsuri = 'ws://10.0.4.41:8765';
+
 	let prev = () => {
-		console.log("this feature is not implemented yet")
+		let ws12 = new WebSocket(wsuri);
+		ws12.onopen = function () {
+			ws12.send(JSON.stringify({ 'command': 'previous' }));
+		};
+		console.log("previous button clicked");
 	}
 
 	let play = () => {
-		const wsuri = 'ws://10.0.4.41:8765';
 		const playcmd = JSON.stringify({ 'command': 'play' });
 		let ws1 = new WebSocket(wsuri);
 		ws1.onopen = function () {
@@ -16,7 +21,6 @@
 	}
 
 	let pause = () => {
-		const wsuri = 'ws://10.0.4.41:8765';
 		const pausecmd = JSON.stringify({ 'command': 'pause' });
 		let ws1 = new WebSocket(wsuri);
 		ws1.onopen = function () {
@@ -26,7 +30,6 @@
 	}
 
 	let stop = () => {
-		const wsuri = 'ws://10.0.4.41:8765';
 		const stopcmd = JSON.stringify({ 'command': 'stop' });
 		let ws1 = new WebSocket(wsuri);
 		ws1.onopen = function () {
@@ -36,7 +39,12 @@
 	}
 
 	let next = () => {
-		console.log("this feature is not implemented yet")
+		const nextcmd = JSON.stringify({ 'command': 'next' });
+		let ws1 = new WebSocket(wsuri);
+		ws1.onopen = function () {
+			ws1.send(nextcmd);
+		};
+		console.log("next button clicked");
 	}
 </script>
 
