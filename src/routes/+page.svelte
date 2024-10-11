@@ -11,6 +11,7 @@
 	<h1>MTV Movies</h1>	
 
 	<div class="fuck">
+		<a href="/Search"><h3>Search</h3></a>
 		<a href="http://10.0.4.58:8091/"><h3>TvShows</h3></a>
 		<a href="http://10.0.4.39:9090/"><h3>Music</h3></a>
 	</div>
