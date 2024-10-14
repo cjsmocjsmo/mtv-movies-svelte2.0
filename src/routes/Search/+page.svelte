@@ -107,4 +107,13 @@
 		margin: 1em;
 		background-color: blue;
 	}
+
+	.navList {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex: 0.6;
+		text-decoration: underline;
+	}
 </style>
