@@ -114,6 +114,13 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+	}
+
+	a {
+		margin: 1em;
+	}
+
+	h3 {
 		text-decoration: underline;
 	}
 </style>
