@@ -46,7 +46,7 @@ echo "mtvmoviessvelte$minusone";
 
 if [ "$minusone" -eq 0 ]; then
     
-    npm install;
+    npm install --force;
 
     npm run build;
 
@@ -66,7 +66,7 @@ if [ "$minusone" -eq 1 ]; then
 
     docker rm mtvmoviessvelte1;
 
-    npm install;
+    npm install --force;
 
     npm run build;
 
@@ -87,7 +87,7 @@ if [ "$minusone" -gt 1 ]; then
 
     docker rm mtvmoviessvelte$minusone;
 
-    npm install;
+    npm install --force;
 
     npm run build;
 
