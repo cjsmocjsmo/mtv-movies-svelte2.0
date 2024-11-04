@@ -4,7 +4,7 @@
 	import MovList from '$lib/components/MovList.svelte';
 
 	let ws;
-	let data = [];
+	let data = $state([]);
 
 	function initWebSocket() {
 		const wsuri = "ws://10.0.4.41:8765";

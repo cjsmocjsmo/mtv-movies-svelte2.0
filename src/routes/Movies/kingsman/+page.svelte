@@ -17,7 +17,7 @@
 	import MovList from '$lib/components/MovList.svelte';
 
 	let ws;
-	let data = [];
+	let data = $state([]);
 
 
 	function initWebSocket() {

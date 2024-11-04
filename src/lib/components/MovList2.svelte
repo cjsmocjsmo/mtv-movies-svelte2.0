@@ -1,6 +1,6 @@
 <script>
-	export let data;
 	import MovPlayButton from './MOVPlayButton.svelte';
+	let { data } = $props();
 </script>
 
 <div class="movlist">

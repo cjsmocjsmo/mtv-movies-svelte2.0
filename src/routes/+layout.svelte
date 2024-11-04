@@ -1,5 +1,12 @@
 <script>
 	import './styles.css';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
 
 	const wsuri = 'ws://10.0.4.41:8765';
 
@@ -50,7 +57,7 @@
 
 <div class="app">
 	<main>
-		<slot />
+		{@render children?.()}
 	</main>
 
 	<footer>
@@ -58,10 +65,10 @@
 			<div
 				id="previousBtn"
 				class="controlBtn"
-				on:click={prev}
-				on:keypress={prev}
-				on:keyup={prev}
-				on:keydown={prev}
+				onclick={prev}
+				onkeypress={prev}
+				onkeyup={prev}
+				onkeydown={prev}
 				role="button"
 				tabindex="0"
 			>
@@ -75,10 +82,10 @@
 			<div
 				id="playBtn"
 				class="controlBtn"
-				on:click={play}
-				on:keypress={play}
-				on:keyup={play}
-				on:keydown={play}
+				onclick={play}
+				onkeypress={play}
+				onkeyup={play}
+				onkeydown={play}
 				role="button"
 				tabindex="0"
 			>
@@ -88,10 +95,10 @@
 			<div
 				id="pauseBtn"
 				class="controlBtn"
-				on:click={pause}
-				on:keypress={pause}
-				on:keyup={pause}
-				on:keydown={pause}
+				onclick={pause}
+				onkeypress={pause}
+				onkeyup={pause}
+				onkeydown={pause}
 				role="button"
 				tabindex="0"
 			>
@@ -101,10 +108,10 @@
 			<div
 				id="stopBtn"
 				class="controlBtn"
-				on:click={stop}
-				on:keypress={stop}
-				on:keyup={stop}
-				on:keydown={stop}
+				onclick={stop}
+				onkeypress={stop}
+				onkeyup={stop}
+				onkeydown={stop}
 				role="button"
 				tabindex="0"
 			>
@@ -114,10 +121,10 @@
 			<div
 				id="nextBtn"
 				class="controlBtn"
-				on:click={next}
-				on:keypress={next}
-				on:keyup={next}
-				on:keydown={next}
+				onclick={next}
+				onkeypress={next}
+				onkeyup={next}
+				onkeydown={next}
 				role="button"
 				tabindex="0"
 			>

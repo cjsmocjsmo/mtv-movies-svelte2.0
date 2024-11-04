@@ -2,9 +2,9 @@
     import { onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
 
-	let ws;
-	let search_phrase = [];
-	let result_data = [];
+	let ws = $state();
+	let search_phrase = $state([]);
+	let result_data = $state([]);
 
 	function movSearch() {
 		const wsuri = "ws://10.0.4.41:8765";
@@ -44,8 +44,8 @@
 <main>
 	<BackArrow path="/" />
 	<h1>Search</h1>
-	<input bind:value={search_phrase}  on:keydown={handleKeyDown} type="text" placeholder="Enter search term" />
-	<button class='movSearch' on:click={() => movSearch(search_phrase)} on:keydown={handleKeyDown} >Submit</button>
+	<input bind:value={search_phrase}  onkeydown={handleKeyDown} type="text" placeholder="Enter search term" />
+	<button class='movSearch' onclick={() => movSearch(search_phrase)} onkeydown={handleKeyDown} >Submit</button>
 	<div class="navList">
 		<a href="http://10.0.4.58:8090"><h3>Movies</h3></a>
 		<a href="http://10.0.4.58:8091"><h3>TvShows</h3></a>
@@ -56,7 +56,7 @@
 		<div class="movlist">
 		{#each result_data as mov}
 				<button
-					on:click={() => {
+					onclick={() => {
 						const cmd1 = JSON.stringify({ "command": "set_media", "media_id": mov.MovId });
 						const cmd2 = JSON.stringify({ "command": "play" });
 						ws.send(cmd1);
