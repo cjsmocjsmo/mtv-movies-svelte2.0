@@ -1,5 +1,15 @@
 <script>
 	import MainMovList from '$lib/components/MainMovList.svelte';
+	import  { onMount } from 'svelte';
+	
+
+	let temp = "";
+	onMount(async () => {
+    	const response = await fetch('http://10.0.4.60:8080/tempf');
+    	const newData = await response.json();
+    	temp = newData;
+		console.log(temp);
+  	});
 </script>
 
 <svelte:head>
@@ -14,6 +24,7 @@
 		<a href="http://10.0.4.58:8091/"><h3>TvShows</h3></a>
 		<a href="http://10.0.4.76:9090/"><h3>Music</h3></a>
 		<a href="/Search"><h3>Search</h3></a>
+		<h3>{temp}°F</h3>
 	</div>
 	
 	<div>
