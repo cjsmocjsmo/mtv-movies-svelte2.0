@@ -5,6 +5,7 @@
 	let tempf = "";
 	let tempc = "";
 	let humi = "";
+	let timestamp = "";
 
 	// onMount(async () => {
     // 	const response = await fetch('http://10.0.4.60:8080/tempf');
@@ -35,12 +36,12 @@
 
 		const response4 = await fetch('http://10.0.4.60:8080/timestamp');
 		const newData4 = await response4.json();
-		console.log(newData4);
+		timestamp = newData4;
     }
 
     onMount(() => {
         fetchData();
-        const interval = setInterval(fetchData, 15 * 60 * 1000); // 15 minutes in milliseconds
+        const interval = setInterval(fetchData, 5 * 60 * 1000); // 15 minutes in milliseconds
 
         return () => clearInterval(interval); // Cleanup interval on component destroy
     });
