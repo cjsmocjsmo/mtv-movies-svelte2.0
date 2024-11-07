@@ -35,7 +35,7 @@
 		<a href="/Search"><h3>Search</h3></a>
 		
 	</div>
-	<div>
+	<div class="foo">
 		<h3>{tempf}°F</h3>
 		<h3>{tempc}°C</h3>
 		<h3>{humi}%H</h3>
@@ -60,6 +60,12 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+	}
+	.foo {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
 	}
 	h3 {
 		margin: 1em;
