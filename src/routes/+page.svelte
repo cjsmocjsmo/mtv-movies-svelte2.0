@@ -43,12 +43,12 @@
 </svelte:head>
 
 <main>
-	<div class="foo">
+	<!-- <div class="foo">
 		<h3 class="bar">{tempf}°F</h3>
 		<h3 class="bar">{tempc}°C</h3>
 		<h3 class="bar">{humi}%H</h3>
 		<h3 class="bar">{timestamp}</h3>
-	</div>
+	</div> -->
 	
 	<h1>MTV Movies</h1>	
 	<div class="fuck">
