@@ -86,7 +86,7 @@
         margin: 1em;
 	}
     .todaysChart {
-        width: 400px;
+        width: 600px;
     }
     .currentcon {
         text-align: center;
