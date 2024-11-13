@@ -1,7 +1,6 @@
 <script>
 	import MainMovList from '$lib/components/MainMovList.svelte';
 	import  { onMount } from 'svelte';
-	import TempChart from '$lib/components/Temp_Chart.svelte';
 
 	let tempf = "";
 	let tempc = "";
@@ -52,18 +51,12 @@
 	</div>
 	
 	<h1>MTV Movies</h1>	
-	<!-- <div class="MTVChart">
-		<TempChart />
-	</div> -->
 	<div class="fuck">
 		<a href="http://10.0.4.58:8091/"><h3>TvShows</h3></a>
 		<a href="http://10.0.4.76:9090/"><h3>Music</h3></a>
 		<a href="/Search"><h3>Search</h3></a>
 		<a href="/Temps"><h3>Temps</h3></a>
 	</div>
-
-	
-	
 	
 	<div>
 		<MainMovList />
@@ -71,10 +64,6 @@
 </main>
 
 <style>
-	.MTVChart {
-		width: 400px;
-		height: 200px;
-	}
 	main {
 		display: flex;
 		flex-direction: column;
