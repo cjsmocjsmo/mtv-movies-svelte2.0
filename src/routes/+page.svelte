@@ -7,8 +7,6 @@
 	let humi = "";
 	let timestamp = "";
 
-	
-
 	async function fetchData() {
         const response = await fetch('http://10.0.4.60:8080/tempf');
         const newData = await response.json();
@@ -43,13 +41,6 @@
 </svelte:head>
 
 <main>
-	<!-- <div class="foo">
-		<h3 class="bar">{tempf}°F</h3>
-		<h3 class="bar">{tempc}°C</h3>
-		<h3 class="bar">{humi}%H</h3>
-		<h3 class="bar">{timestamp}</h3>
-	</div> -->
-	
 	<h1>MTV Movies</h1>	
 	<div class="fuck">
 		<a href="http://10.0.4.58:8091/"><h3>TvShows</h3></a>
@@ -77,15 +68,6 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
-	}
-	.foo {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-	}
-	.bar {
-		color: blue;
 	}
 	h3 {
 		margin: 1em;
