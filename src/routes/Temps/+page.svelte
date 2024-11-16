@@ -57,9 +57,8 @@
                 <YesterdayChart />
             </div>
         </div>
-    </div>  
+    </div> 
 </div>
-
 
 <style>
     .bazbar{

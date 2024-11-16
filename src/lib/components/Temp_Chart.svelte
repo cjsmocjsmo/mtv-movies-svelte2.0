@@ -52,5 +52,8 @@
     });
   </script>   
 
-<canvas id="myChart"></canvas>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
 
