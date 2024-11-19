@@ -2,12 +2,21 @@
     import  { onMount } from 'svelte';
     import BackArrow from '$lib/components/BackArrow.svelte'
     import TempChart from '$lib/components/Temp_Chart.svelte';
+    import TempChartHome from '$lib/components/Temp_Chart_Home.svelte';
     import YesterdayChart from '$lib/components/Yesterdays_Temp_Chart.svelte';
+    import YesterdayChartHome from '$lib/components/Yesterdays_Temp_Chart_Home.svelte';
     
     let tempf = "";
 	let tempc = "";
 	let humi = "";
 	let timestamp = "";
+
+    let tempfHome = "";
+    let tempcHome = "";
+    let humiHome = "";
+    let timestampHome = "";
+
+
 
     async function fetchData() {
         const response = await fetch('http://10.0.4.60:8080/tempf');
@@ -25,6 +34,22 @@
 		const response4 = await fetch('http://10.0.4.60:8080/timestamp');
 		const newData4 = await response4.json();
 		timestamp = newData4;
+
+        const response5 = await fetch('http://10.0.4.57:8080/tempf');
+        const newData5 = await response5.json();
+        tempfHome = newData5;
+
+        const response6 = await fetch('http://10.0.4.57:8080/tempc');
+        const newData6 = await response6.json();
+        tempcHome = newData6;
+
+        const response7 = await fetch('http://10.0.4.57:8080/humi');
+        const newData7 = await response7.json();
+        humiHome = newData7;
+
+        const response8 = await fetch('http://10.0.4.57:8080/timestamp');
+        const newData8 = await response8.json();
+        timestampHome = newData8;
 	}
 
     onMount(() => {
@@ -37,27 +62,54 @@
 
 <div>
     <BackArrow path="/"/>
-    <h2 class="currentcon">Current Conditions</h2>
-    <div class="foo">
-		<h3 class="bar">{tempf}°F</h3>
-		<h3 class="bar">{tempc}°C</h3>
-		<h3 class="bar">{humi}%H</h3>
-		<h3 class="bar">{timestamp}</h3>
-	</div>
-    <div class="bazbar">
-        <div class="foobar">
-            <h2>Todays Temps</h2>
-            <div class="todaysChart">
-                <TempChart />
-            </div>
+    <div>
+        <h1>Shed</h1>
+        <h2 class="currentcon">Current Conditions</h2>
+        <div class="foo">
+            <h3 class="bar">{tempf}°F</h3>
+            <h3 class="bar">{tempc}°C</h3>
+            <h3 class="bar">{humi}%H</h3>
+            <h3 class="bar">{timestamp}</h3>
         </div>
-        <div class="foobar">
-            <h2>Yesterdays Temps</h2>
-            <div class="todaysChart">
-                <YesterdayChart />
+        <div class="bazbar">
+            <div class="foobar">
+                <h2>Todays Temps</h2>
+                <div class="todaysChart">
+                    <TempChart />
+                </div>
             </div>
+            <div class="foobar">
+                <h2>Yesterdays Temps</h2>
+                <div class="todaysChart">
+                    <YesterdayChart />
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div>
+        <h1>Home</h1>
+        <h2 class="currentcon">Current Conditions</h2>
+        <div class="foo">
+            <h3 class="bar">{tempfHome}°F</h3>
+            <h3 class="bar">{tempcHome}°C</h3>
+            <h3 class="bar">{humiHome}%H</h3>
+            <h3 class="bar">{timestampHome}</h3>
         </div>
-    </div> 
+        <div class="bazbar">
+            <div class="foobar">
+                <h2>Todays Temps</h2>
+                <div class="todaysChart">
+                    <TempChartHome />
+                </div>
+            </div>
+            <div class="foobar">
+                <h2>Yesterdays Temps</h2>
+                <div class="todaysChart">
+                    <YesterdayChartHome />
+                </div>
+            </div>
+        </div> 
+    </div>
 </div>
 
 <style>

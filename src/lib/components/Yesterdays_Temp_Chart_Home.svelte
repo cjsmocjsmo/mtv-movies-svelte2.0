@@ -2,8 +2,8 @@
     import { onMount } from 'svelte';
     import Chart from 'chart.js/auto';
 
-    async function get_todays_tempf() {
-      const response = await fetch('http://10.0.4.60:8080/todays_tempf');
+    async function get_yesterdays_tempf() {
+      const response = await fetch('http://10.0.4.57:8080/yesterdays_tempf');
       const tempfData = await response.json();
       tempfData.forEach((temp, index) => {
         tempfData[index] = Number(temp);
@@ -11,8 +11,8 @@
       return tempfData;
     }
     
-    async function get_todays_humi() {
-      const response = await fetch('http://10.0.4.60:8080/todays_humi');
+    async function get_yesterdays_humi() {
+      const response = await fetch('http://10.0.4.57:8080/yesterdays_humi');
       const humiData = await response.json();
       humiData.forEach((humi, index) => {
         humiData[index] = Number(humi);
@@ -23,10 +23,13 @@
     let chart;
 
     onMount(async () => {
-      const tempf = await get_todays_tempf();
-      const humiDATA = await get_todays_humi();
+      const tempf = await get_yesterdays_tempf();
+      const humiDATA = await get_yesterdays_humi();
 
-      const ctx = document.getElementById('tempChart').getContext('2d');
+      console.log(tempf);
+      console.log(humiDATA);
+
+      const ctx = document.getElementById('yesterdayChartHome').getContext('2d');
       chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -52,8 +55,5 @@
     });
   </script>   
 
-<div>
-  <canvas id="tempChart"></canvas>
-</div>
-
+<canvas id="yesterdayChartHome"></canvas>
 
