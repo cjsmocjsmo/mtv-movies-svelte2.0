@@ -15,9 +15,7 @@
 
 		ws.onopen = function() {
 			console.log("WebSocket connection opened: " + wsuri);
-			console.log(search_phrase);
 			ws.send(JSON.stringify({ "command": "movcount" }));
-			search_phrase = "";
 		};
 
 		ws.onmessage = function(event) {
@@ -108,10 +106,10 @@
 <main>
 	<BackArrow path="/" />
 	<h1>Stats</h1>
-    <h2>Movies: {mov_count}</h2>
-    <h2>TV Shows: {tv_count}</h2>
-    <h2>Movies Size on Disk: {mov_size_on_disk}</h2>
-    <h2>TV Shows Size on Disk: {tv_size_on_disk}</h2>
+    <h3>Movies: {mov_count}</h3>
+    <h3>TV Shows: {tv_count}</h3>
+    <h3>Movies Size on Disk: {mov_size_on_disk}</h3>
+    <h3>TV Shows Size on Disk: {tv_size_on_disk}</h3>
 	
 
 </main>
