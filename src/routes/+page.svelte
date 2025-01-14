@@ -47,6 +47,7 @@
 		<a href="http://10.0.4.76:9090/"><h3>Music</h3></a>
 		<a href="/Search"><h3>Search</h3></a>
 		<a href="/Temps"><h3>Temps</h3></a>
+		<a href="/Stats"><h3>Stats</h3></a>
 	</div>
 	
 	<div>

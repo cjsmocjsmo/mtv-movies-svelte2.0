@@ -106,8 +106,8 @@
 	<h1>Stats</h1>
     <h3>Movies: {mov_count}</h3>
     <h3>TV Shows: {tv_count}</h3>
-    <h3>Movies Size on Disk: {mov_size_on_disk}</h3>
-    <h3>TV Shows Size on Disk: {tv_size_on_disk}</h3>
+    <h3>Movies Size on Disk: {mov_size_on_disk} GB</h3>
+    <h3>TV Shows Size on Disk: {tv_size_on_disk} GB</h3>
 	
 
 </main>
