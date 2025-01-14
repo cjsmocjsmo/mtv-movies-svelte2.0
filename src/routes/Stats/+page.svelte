@@ -8,10 +8,11 @@
     let mov_size_on_disk = $state(0);
     let tv_size_on_disk = $state(0);
 
+    const wsuri = "ws://10.0.4.41:8765";
+
 	function movCount() {
-		const wsuri = "ws://10.0.4.41:8765";
-		ws = new WebSocket(wsuri);
-		console.log("WebSocket connection created: " + wsuri);
+		let ws = new WebSocket(wsuri);
+		console.log("WebSocket mov_count connection created: " + wsuri);
 
 		ws.onopen = function() {
 			console.log("WebSocket connection opened: " + wsuri);
@@ -19,8 +20,8 @@
 		};
 
 		ws.onmessage = function(event) {
-			result_data = JSON.parse(event.data);
-			console.log("Message received from server: ", mov_count);
+			mov_count = JSON.parse(event.data);
+			console.log("mov_count Message received from server: ", mov_count);
 		};
 
 		ws.onerror = function(error) {
@@ -29,29 +30,27 @@
 	}
 
 	function tvcount() {
-        const wsuri = "ws://10.0.4.41:8765";
-		ws = new WebSocket(wsuri);
+		let ws2 = new WebSocket(wsuri);
 		console.log("WebSocket connection created: " + wsuri);
 
-        ws.onopen = function() {
+        ws2.onopen = function() {
             console.log("WebSocket connection opened: " + wsuri);
-            ws.send(JSON.stringify({ "command": "tvcount" }));
+            ws2.send(JSON.stringify({ "command": "tvcount" }));
         };
 
-        ws.onmessage = function(event) {
+        ws2.onmessage = function(event) {
             tv_count = JSON.parse(event.data);
             console.log("Message received from server: ", tv_count);
         };
 
-        ws.onerror = function(error) {
+        ws2.onerror = function(error) {
             console.error("WebSocket error: ", error);
         };
     }
 
     function movSizeOnDisk() {
-        const wsuri = "ws://10.0.4.41:8765";
-		ws = new WebSocket(wsuri);
-		console.log("WebSocket connection created: " + wsuri);
+		let ws = new WebSocket(wsuri);
+		console.log("WebSocket movSizeOnDisk connection created: " + wsuri);
 
         ws.onopen = function() {
             console.log("WebSocket connection opened: " + wsuri);
@@ -69,7 +68,6 @@
     }
 
     function tvSizeOnDisk() {
-        const wsuri = "ws://10.0.4.41:8765";
 		ws = new WebSocket(wsuri);
 		console.log("WebSocket connection created: " + wsuri);
 
