@@ -19,35 +19,35 @@
 
 
     async function fetchData() {
-        const response = await fetch('http://10.0.4.210:8080/tempf');
+        const response = await fetch('http://10.0.4.215:8080/tempf');
         const newData = await response.json();
         tempf = newData;
 
-        const response2 = await fetch('http://10.0.4.210:8080/tempc');
+        const response2 = await fetch('http://10.0.4.215:8080/tempc');
         const newData2 = await response2.json();
         tempc = newData2;
 
-        const response3 = await fetch('http://10.0.4.210:8080/humi');
+        const response3 = await fetch('http://10.0.4.215:8080/humi');
         const newData3 = await response3.json();
         humi = newData3;
 
-		const response4 = await fetch('http://10.0.4.210:8080/timestamp');
+		const response4 = await fetch('http://10.0.4.215:8080/timestamp');
 		const newData4 = await response4.json();
 		timestamp = newData4;
 
-        const response5 = await fetch('http://10.0.4.210:8080/tempf');
+        const response5 = await fetch('http://10.0.4.60:8080/tempf');
         const newData5 = await response5.json();
         tempfHome = newData5;
 
-        const response6 = await fetch('http://10.0.4.210:8080/tempc');
+        const response6 = await fetch('http://10.0.4.60:8080/tempc');
         const newData6 = await response6.json();
         tempcHome = newData6;
 
-        const response7 = await fetch('http://10.0.4.210:8080/humi');
+        const response7 = await fetch('http://10.0.4.60:8080/humi');
         const newData7 = await response7.json();
         humiHome = newData7;
 
-        const response8 = await fetch('http://10.0.4.210:8080/timestamp');
+        const response8 = await fetch('http://10.0.4.60:8080/timestamp');
         const newData8 = await response8.json();
         timestampHome = newData8;
 	}
