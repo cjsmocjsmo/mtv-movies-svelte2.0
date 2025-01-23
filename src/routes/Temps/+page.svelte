@@ -35,19 +35,19 @@
 		const newData4 = await response4.json();
 		timestamp = newData4;
 
-        const response5 = await fetch('http://10.0.4.60:8080/tempf');
+        const response5 = await fetch('http://10.0.4.72:8080/tempf');
         const newData5 = await response5.json();
         tempfHome = newData5;
 
-        const response6 = await fetch('http://10.0.4.60:8080/tempc');
+        const response6 = await fetch('http://10.0.4.72:8080/tempc');
         const newData6 = await response6.json();
         tempcHome = newData6;
 
-        const response7 = await fetch('http://10.0.4.60:8080/humi');
+        const response7 = await fetch('http://10.0.4.72:8080/humi');
         const newData7 = await response7.json();
         humiHome = newData7;
 
-        const response8 = await fetch('http://10.0.4.60:8080/timestamp');
+        const response8 = await fetch('http://10.0.4.72:8080/timestamp');
         const newData8 = await response8.json();
         timestampHome = newData8;
 	}
