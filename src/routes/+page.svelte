@@ -8,19 +8,19 @@
 	let timestamp = "";
 
 	async function fetchData() {
-        const response = await fetch('http://10.0.4.215:8080/tempf');
+        const response = await fetch('http://10.0.4.218:8080/tempf');
         const newData = await response.json();
         tempf = newData;
 
-        const response2 = await fetch('http://10.0.4.215:8080/tempc');
+        const response2 = await fetch('http://10.0.4.218:8080/tempc');
         const newData2 = await response2.json();
         tempc = newData2;
 
-        const response3 = await fetch('http://10.0.4.215:8080/humi');
+        const response3 = await fetch('http://10.0.4.218:8080/humi');
         const newData3 = await response3.json();
         humi = newData3;
 
-		const response4 = await fetch('http://10.0.4.215:8080/timestamp');
+		const response4 = await fetch('http://10.0.4.218:8080/timestamp');
 		const newData4 = await response4.json();
 		timestamp = newData4;
 	}
@@ -46,8 +46,11 @@
 		<a href="http://10.0.4.76:8091/"><h3>TvShows</h3></a>
 		<a href="http://10.0.4.76:9090/"><h3>Music</h3></a>
 		<a href="/Search"><h3>Search</h3></a>
+	</div>
+	<div class="fuck">
 		<a href="/Temps"><h3>Temps</h3></a>
 		<a href="/Stats"><h3>Stats</h3></a>
+		<a href="/Propane"><h3>Propane</h3></a>
 	</div>
 	
 	<div>
