@@ -1,5 +1,6 @@
 <script>
 	import MainMovList from '$lib/components/MainMovList.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
 	import  { onMount } from 'svelte';
 
 	let tempf = "";
@@ -42,7 +43,9 @@
 
 <main>
 	<h1>MTV Movies</h1>	
-	<div class="fuck">
+
+	<NavBar />
+	<!-- <div class="fuck">
 		<a href="http://10.0.4.76:8091/"><h3>TvShows</h3></a>
 		<a href="http://10.0.4.76:9090/"><h3>Music</h3></a>
 		<a href="/Search"><h3>Search</h3></a>
@@ -51,7 +54,7 @@
 		<a href="/Temps"><h3>Temps</h3></a>
 		<a href="/Stats"><h3>Stats</h3></a>
 		<a href="/Propane"><h3>Propane</h3></a>
-	</div>
+	</div> -->
 	
 	<div>
 		<MainMovList />
@@ -66,7 +69,7 @@
 		align-items: center;
 		flex: 0.6;
 	}
-	.fuck {
+	/* .fuck {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
@@ -75,7 +78,7 @@
 	}
 	h3 {
 		margin: 1em;
-	}
+	} */
 	h1 {
 		color: yellowgreen;
 	}

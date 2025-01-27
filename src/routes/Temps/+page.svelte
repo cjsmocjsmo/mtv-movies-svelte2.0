@@ -5,9 +5,11 @@
     import TempChartHome from '$lib/components/Temp_Chart_Home.svelte';
     import YesterdayChart from '$lib/components/Yesterdays_Temp_Chart.svelte';
     import YesterdayChartHome from '$lib/components/Yesterdays_Temp_Chart_Home.svelte';
+    import NavBar from '$lib/components/NavBar.svelte';
     
     let tempf = "";
 	let tempc = "";
+    let tempo = "";
 	let humi = "";
 	let timestamp = "";
 
@@ -26,6 +28,10 @@
         const response2 = await fetch('http://10.0.4.218:8080/tempc');
         const newData2 = await response2.json();
         tempc = newData2;
+
+        const response22 = await fetch('http://10.0.4.218:8080/tempo');
+        const newData22 = await response22.json();
+        tempo = newData22;
 
         const response3 = await fetch('http://10.0.4.218:8080/humi');
         const newData3 = await response3.json();
@@ -62,12 +68,16 @@
 
 <div>
     <BackArrow path="/"/>
+
+    <NavBar />
+
     <div>
         <h1>Shed</h1>
         <h2 class="currentcon">Current Conditions</h2>
         <div class="foo">
             <h3 class="bar">{tempf}°F</h3>
             <h3 class="bar">{tempc}°C</h3>
+            <h3 class="bar">{tempo}°F</h3>
             <h3 class="bar">{humi}%H</h3>
             <h3 class="bar">{timestamp}</h3>
         </div>
@@ -92,6 +102,7 @@
         <div class="foo">
             <h3 class="bar">{tempfHome}°F</h3>
             <h3 class="bar">{tempcHome}°C</h3>
+            <h3 class="bar">{tempo}°F</h3>
             <h3 class="bar">{humiHome}%H</h3>
             <h3 class="bar">{timestampHome}</h3>
         </div>
@@ -125,6 +136,7 @@
         justify-content: center;
         align-items: center;
         margin: 1em;
+        
     }
     .foo {
 		display: flex;
@@ -142,5 +154,4 @@
     .currentcon {
         text-align: center;
     }
-
 </style>

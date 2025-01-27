@@ -1,6 +1,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
+    import NavBar from '$lib/components/NavBar.svelte';
 
 	let ws = $state();
 	let mov_count = $state(0);
@@ -103,6 +104,9 @@
 
 <main>
 	<BackArrow path="/" />
+
+    <NavBar />
+    
 	<h1>Stats</h1>
     <h3>Movies: {mov_count}</h3>
     <h3>TV Shows: {tv_count}</h3>

@@ -1,20 +1,20 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
 
 	let ws = $state();
 	let gallon_total = $state(0);
     let amount_total = $state(0);
 
-	let propane_new_gallons = $state(0);
-	let propane_new_amount = $state(0);
+	let propane_new_gallons = $state("");
+	let propane_new_amount = $state("");
 
-    l
     const wsuri = "ws://10.0.4.41:8765";
 
 	function gallonsTotal() {
 		let ws = new WebSocket(wsuri);
-		console.log("WebSocket mov_count connection created: " + wsuri);
+		console.log("WebSocket gallonstotal connection created: " + wsuri);
 
 		ws.onopen = function() {
 			console.log("WebSocket connection opened: " + wsuri);
@@ -22,8 +22,9 @@
 		};
 
 		ws.onmessage = function(event) {
-			gallons_total = JSON.parse(event.data);
-			console.log("mov_count Message received from server: ", gallons_total);
+			let gallon_total_raw = JSON.parse(event.data);
+			gallon_total = gallon_total_raw.toFixed(1);
+			console.log("gallonstotal Message received from server: ", gallon_total);
 		};
 
 		ws.onerror = function(error) {
@@ -32,65 +33,63 @@
 	}
 
 	function amountTotal() {
-		let ws2 = new WebSocket(wsuri);
+		let ws = new WebSocket(wsuri);
 		console.log("WebSocket connection created: " + wsuri);
 
-        ws2.onopen = function() {
+        ws.onopen = function() {
             console.log("WebSocket connection opened: " + wsuri);
-            ws2.send(JSON.stringify({ "command": "amounttotal" }));
+            ws.send(JSON.stringify({ "command": "amounttotal" }));
         };
 
-        ws2.onmessage = function(event) {
-            amount_total = JSON.parse(event.data);
+        ws.onmessage = function(event) {
+            let amount_total_raw = JSON.parse(event.data);
+			amount_total = amount_total_raw.toFixed(2);
             console.log("Message received from server: ", amountTotal);
         };
 
-        ws2.onerror = function(error) {
+        ws.onerror = function(error) {
             console.error("WebSocket error: ", error);
         };
     }
 
-	function insertAmount() {
-		let ws3 = new WebSocket(wsuri);
-		console.log("WebSocket connection created: " + wsuri);
+	function insertAmount(propane_new_amount) {
+		let ws = new WebSocket(wsuri);
+		console.log("insertamount WebSocket connection created: " + wsuri);
+		console.log("Propane Amount: ");
+		console.log(propane_new_amount);
 
-		ws3.onopen = function() {
+		ws.onopen = function() {
 			console.log("WebSocket connection opened: " + wsuri);
-			ws3.send(JSON.stringify({ "command": "insertamount", "amount": propane_new_amount }));
+			console.log(propane_new_amount);
+			ws.send(JSON.stringify({ "command": "insertamount", "amount": propane_new_amount }));
 		};
 
-		ws3.onmessage = function(event) {
+		ws.onmessage = function(event) {
 			console.log("Message received from server: ", event.data);
 		};
 
-		ws3.onerror = function(error) {
+		ws.onerror = function(error) {
 			console.error("WebSocket error: ", error);
 		};
 	}
 
-	function insertGallons() {
-		let ws4 = new WebSocket(wsuri);
+	function insertGallons(propane_new_gallons) {
+		let ws = new WebSocket(wsuri);
 		console.log("WebSocket connection created: " + wsuri);
 
-		ws4.onopen = function() {
-			console.log("WebSocket connection opened: " + wsuri);
-			ws4.send(JSON.stringify({ "command": "insertgallons", "gallons": propane_new_gallons }));
+		ws.onopen = function() {
+			console.log("insertgallons WebSocket connection opened: " + wsuri);
+			ws.send(JSON.stringify({ "command": "insertgallons", "gallons": propane_new_gallons }));
 		};
 
-		ws4.onmessage = function(event) {
+		ws.onmessage = function(event) {
 			console.log("Message received from server: ", event.data);
 		};
 
-		ws4.onerror = function(error) {
+		ws.onerror = function(error) {
 			console.error("WebSocket error: ", error);
 		};
 	}
-
-	function submitForm(amount, gallons) {
-		insertAmount(amount);
-		insertGallons(gallons);
-	}
-
 
     onMount(async () => {
         console.log("Component mounted");
@@ -107,22 +106,33 @@
 
 <main>
 	<BackArrow path="/" />
+
+	<NavBar />
+
 	<h1>Propane</h1>
     <div >
-        <h3>Total Used: {gallon_total} gal</h3>
-        <h3>Total Cost: ${amount_total}</h3>
+        <h1>Total Used: {gallon_total} gal</h1>
+        <h1>Total Cost: ${amount_total}</h1>
     </div>
-
-    <form class="main">
-        <label for="gal">Gallons:</label>
-        <input bind={propane_new_gallons} type="number" id="gal" name="gal" min="1" max="100">
-        <label for="cost">Cost:</label>
-        <input bind={propane_new_amount} type="number" id="cost" name="cost" min="1" max="100">
-        <button onclick={() => submitForm(propane_new_amount, propane_new_gallons)} type="submit">Submit</button>
-    </form>
-    
-	
-
+	<div class="main">
+		<form class="movlist">
+			<label for="gal">Gallons:</label>
+			<input class="movSearch" bind:value={propane_new_gallons} type="text" id="gal" name="gal" min="1" max="100">
+			<label for="cost">Cost:</label>
+			<input class="movSearch" bind:value={propane_new_amount} type="text" id="cost" name="cost" min="1" max="100">
+			<button 
+				onclick={() => {
+					insertAmount(propane_new_amount);
+					insertGallons(propane_new_gallons);
+					gallonsTotal();
+					amountTotal();
+					propane_new_amount = "";
+					propane_new_gallons = "";
+					
+				}}
+				type="submit">Submit</button>
+		</form>
+	</div>
 </main>
 
 <style>
@@ -134,6 +144,31 @@
 		flex: 0.6;
 	}
 	
+	input {
+		width: 50%;
+		height: 2em;
+		font-size: 1.25em;
+		border-radius: 12px;
+		margin: 1em;
+		background-color: yellowgreen;
+		border-color: black;
+	}
 
-	
+	.movlist {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.movSearch {
+		width: 100%;
+		height: 2em;
+		font-size: 1.25em;
+		border-radius: 12px;
+		border-color: black;
+		margin: 1em;
+		background-color: blue;
+	}	
 </style>

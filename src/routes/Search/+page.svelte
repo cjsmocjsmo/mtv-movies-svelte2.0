@@ -1,6 +1,7 @@
 <script>
     import { onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
 
 	let ws = $state();
 	let search_phrase = $state([]);
@@ -43,6 +44,9 @@
 
 <main>
 	<BackArrow path="/" />
+
+	<NavBar />
+	
 	<h1>Search</h1>
 	<input bind:value={search_phrase}  onkeydown={handleKeyDown} type="text" placeholder="Enter search term" />
 	<button class='movSearch' onclick={() => movSearch(search_phrase)} onkeydown={handleKeyDown} >Submit</button>
