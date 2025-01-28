@@ -7,37 +7,37 @@
     import YesterdayChartHome from '$lib/components/Yesterdays_Temp_Chart_Home.svelte';
     import NavBar from '$lib/components/NavBar.svelte';
     
-    let tempf = "";
-	let tempc = "";
-    let tempo = "";
-	let humi = "";
-	let timestamp = "";
+    let tempf = $state("");
+	let tempc = $state("");
+    let tempo = $state("");
+	let humi = $state("");
+	let timestamp = $state("");
 
-    let tempfHome = "";
-    let tempcHome = "";
-    let humiHome = "";
-    let timestampHome = "";
+    let tempfHome = $state("");
+    let tempcHome = $state("");
+    let humiHome = $state("");
+    let timestampHome = $state("");
 
 
 
     async function fetchData() {
-        const response = await fetch('http://10.0.4.218:8080/tempf');
+        const response = await fetch('http://10.0.4.222:8080/tempf');
         const newData = await response.json();
         tempf = newData;
 
-        const response2 = await fetch('http://10.0.4.218:8080/tempc');
+        const response2 = await fetch('http://10.0.4.222:8080/tempc');
         const newData2 = await response2.json();
         tempc = newData2;
 
-        const response22 = await fetch('http://10.0.4.218:8080/tempo');
+        const response22 = await fetch('http://10.0.4.222:8080/tempo');
         const newData22 = await response22.json();
         tempo = newData22;
 
-        const response3 = await fetch('http://10.0.4.218:8080/humi');
+        const response3 = await fetch('http://10.0.4.222:8080/humi');
         const newData3 = await response3.json();
         humi = newData3;
 
-		const response4 = await fetch('http://10.0.4.218:8080/timestamp');
+		const response4 = await fetch('http://10.0.4.222:8080/timestamp');
 		const newData4 = await response4.json();
 		timestamp = newData4;
 
