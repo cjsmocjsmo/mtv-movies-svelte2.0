@@ -3,37 +3,37 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import  { onMount } from 'svelte';
 
-	let tempf = "";
-	let tempc = "";
-	let humi = "";
-	let timestamp = "";
+	// let tempf = "";
+	// let tempc = "";
+	// let humi = "";
+	// let timestamp = "";
 
-	async function fetchData() {
-        const response = await fetch('http://10.0.4.222:8080/tempf');
-        const newData = await response.json();
-        tempf = newData;
+	// async function fetchData() {
+    //     const response = await fetch('http://10.0.4.222:8080/tempf');
+    //     const newData = await response.json();
+    //     tempf = newData;
 
-        const response2 = await fetch('http://10.0.4.222:8080/tempc');
-        const newData2 = await response2.json();
-        tempc = newData2;
+    //     const response2 = await fetch('http://10.0.4.222:8080/tempc');
+    //     const newData2 = await response2.json();
+    //     tempc = newData2;
 
-        const response3 = await fetch('http://10.0.4.222:8080/humi');
-        const newData3 = await response3.json();
-        humi = newData3;
+    //     const response3 = await fetch('http://10.0.4.222:8080/humi');
+    //     const newData3 = await response3.json();
+    //     humi = newData3;
 
-		const response4 = await fetch('http://10.0.4.222:8080/timestamp');
-		const newData4 = await response4.json();
-		timestamp = newData4;
-	}
+	// 	const response4 = await fetch('http://10.0.4.222:8080/timestamp');
+	// 	const newData4 = await response4.json();
+	// 	timestamp = newData4;
+	// }
 
 		
 
-    onMount(() => {
-        fetchData();
-        const interval = setInterval(fetchData, 5 * 60 * 1000); // 15 minutes in milliseconds
+    // onMount(() => {
+    //     // fetchData();
+    //     const interval = setInterval(fetchData, 5 * 60 * 1000); // 15 minutes in milliseconds
 
-        return () => clearInterval(interval); // Cleanup interval on component destroy
-    });
+    //     return () => clearInterval(interval); // Cleanup interval on component destroy
+    // });
 </script>
 
 <svelte:head>

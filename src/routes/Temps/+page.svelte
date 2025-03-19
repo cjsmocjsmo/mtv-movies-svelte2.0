@@ -1,17 +1,17 @@
 <script>
     import  { onMount } from 'svelte';
     import BackArrow from '$lib/components/BackArrow.svelte'
-    import TempChart from '$lib/components/Temp_Chart.svelte';
+    // import TempChart from '$lib/components/Temp_Chart.svelte';
     import TempChartHome from '$lib/components/Temp_Chart_Home.svelte';
-    import YesterdayChart from '$lib/components/Yesterdays_Temp_Chart.svelte';
+    // import YesterdayChart from '$lib/components/Yesterdays_Temp_Chart.svelte';
     import YesterdayChartHome from '$lib/components/Yesterdays_Temp_Chart_Home.svelte';
     import NavBar from '$lib/components/NavBar.svelte';
     
-    let tempf = $state("");
-	let tempc = $state("");
-    let tempo = $state("");
-	let humi = $state("");
-	let timestamp = $state("");
+    // let tempf = $state("");
+	// let tempc = $state("");
+    // let tempo = $state("");
+	// let humi = $state("");
+	// let timestamp = $state("");
 
     let tempfHome = $state("");
     let tempcHome = $state("");
@@ -21,25 +21,25 @@
 
 
     async function fetchData() {
-        const response = await fetch('http://10.0.4.222:8080/tempf');
-        const newData = await response.json();
-        tempf = newData;
+        // const response = await fetch('http://10.0.4.222:8080/tempf');
+        // const newData = await response.json();
+        // tempf = newData;
 
-        const response2 = await fetch('http://10.0.4.222:8080/tempc');
-        const newData2 = await response2.json();
-        tempc = newData2;
+        // const response2 = await fetch('http://10.0.4.222:8080/tempc');
+        // const newData2 = await response2.json();
+        // tempc = newData2;
 
-        const response22 = await fetch('http://10.0.4.222:8080/tempo');
-        const newData22 = await response22.json();
-        tempo = newData22;
+        // const response22 = await fetch('http://10.0.4.222:8080/tempo');
+        // const newData22 = await response22.json();
+        // tempo = newData22;
 
-        const response3 = await fetch('http://10.0.4.222:8080/humi');
-        const newData3 = await response3.json();
-        humi = newData3;
+        // const response3 = await fetch('http://10.0.4.222:8080/humi');
+        // const newData3 = await response3.json();
+        // humi = newData3;
 
-		const response4 = await fetch('http://10.0.4.222:8080/timestamp');
-		const newData4 = await response4.json();
-		timestamp = newData4;
+		// const response4 = await fetch('http://10.0.4.222:8080/timestamp');
+		// const newData4 = await response4.json();
+		// timestamp = newData4;
 
         const response5 = await fetch('http://10.0.4.72:8080/tempf');
         const newData5 = await response5.json();
@@ -71,7 +71,7 @@
 
     <NavBar />
 
-    <div>
+    <!-- <div>
         <h1>Shed</h1>
         <h2 class="currentcon">Current Conditions</h2>
         <div class="foo">
@@ -95,30 +95,30 @@
                 </div>
             </div>
         </div> 
-    </div>
+    </div> -->
     <div>
         <h1>Home</h1>
         <h2 class="currentcon">Current Conditions</h2>
         <div class="foo">
             <h3 class="bar">{tempfHome}°F</h3>
             <h3 class="bar">{tempcHome}°C</h3>
-            <h3 class="bar">{tempo}°F</h3>
+            <!-- <h3 class="bar">{tempo}°F</h3> -->
             <h3 class="bar">{humiHome}%H</h3>
             <h3 class="bar">{timestampHome}</h3>
         </div>
         <div class="bazbar">
-            <div class="foobar">
+            <!-- <div class="foobar">
                 <h2>Todays Temps</h2>
                 <div class="todaysChart">
                     <TempChartHome />
                 </div>
-            </div>
-            <div class="foobar">
+            </div> -->
+            <!-- <div class="foobar">
                 <h2>Yesterdays Temps</h2>
                 <div class="todaysChart">
                     <YesterdayChartHome />
                 </div>
-            </div>
+            </div> -->
         </div> 
     </div>
 </div>
@@ -130,14 +130,14 @@
         justify-content: center;
         align-items: center;
     }
-    .foobar {
+    /* .foobar {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 1em;
         
-    }
+    } */
     .foo {
 		display: flex;
 		flex-direction: row;
@@ -148,9 +148,9 @@
 		color: rgb(0, 217, 255);
         margin: 1em;
 	}
-    .todaysChart {
+    /* .todaysChart {
         width: 600px;
-    }
+    } */
     .currentcon {
         text-align: center;
     }

@@ -2,23 +2,23 @@
     import { onMount } from 'svelte';
     import Chart from 'chart.js/auto';
 
-    async function get_todays_tempf() {
-      const response = await fetch('http://10.0.4.222:8080/todays_tempf');
-      const tempfData = await response.json();
-      tempfData.forEach((temp, index) => {
-        tempfData[index] = Number(temp);
-      });
-      return tempfData;
-    }
+    // async function get_todays_tempf() {
+    //   const response = await fetch('http://10.0.4.222:8080/todays_tempf');
+    //   const tempfData = await response.json();
+    //   tempfData.forEach((temp, index) => {
+    //     tempfData[index] = Number(temp);
+    //   });
+    //   return tempfData;
+    // }
     
-    async function get_todays_humi() {
-      const response = await fetch('http://10.0.4.222:8080/todays_humi');
-      const humiData = await response.json();
-      humiData.forEach((humi, index) => {
-        humiData[index] = Number(humi);
-      });
-      return humiData;
-    } 
+    // async function get_todays_humi() {
+    //   const response = await fetch('http://10.0.4.222:8080/todays_humi');
+    //   const humiData = await response.json();
+    //   humiData.forEach((humi, index) => {
+    //     humiData[index] = Number(humi);
+    //   });
+    //   return humiData;
+    // } 
   
     let chart;
 
