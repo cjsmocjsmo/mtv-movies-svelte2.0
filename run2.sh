@@ -1,87 +1,30 @@
 #!/bin/bash
+basepath=/home/pi/mtv-movies-svelte2.0;
+builddir=$basepath/build;
 
-if ! echo "$1" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
-    echo "The second argument must be a valid version string (e.g., 0.0.1)"
-    exit 1
-fi
-
-echo "$1";
-
-arch = uname -m;
-
-if [ "$arch" == "armv7l" ]; then
-    cp -pvr ./RPI/32/Dockerfile ./Dockerfile;
-elif [ "$arch" == "aarch64" ]; then
-    cp -pvr ./RPI/64/Dockerfile ./Dockerfile;
-elif [ "$arch" == "x86_64" ]; then
-    cp -pvr ./RPI/64/Dockerfile ./Dockerfile;
-fi
+cd $basepath;
 
 git pull https://github.com/cjsmocjsmo/mtv-movies-svelte2.0.git;
 
-# If all checks pass, print the arguments
+rm -rf $builddir;
 
-count1=$(echo "$1" | sed 's/\.//g' )
-count=$((count1+1-1))
-minusone=$((count-1))
+npm run build;
 
-echo "Version: $1";
-echo "mtvmoviessvelte:$1";
-echo "mtvmoviessvelte$count";
-echo "mtvmoviessvelte$minusone";
+arch=$(uname -m);
 
-if [ "$minusone" -eq 0 ]; then
-    
-    npm install;
-
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$1 .;
-    
-    docker run --name mtvmoviessvelte1 -d -p 8090:80 mtvmoviessvelte:$1;
-
-    rm ./Dockerfile;
-
-    exit 0;
+if [ "$arch" = "armv7l" ]; then
+    docker build -t mtvmovsvelte:arm32 -f ./arm32/Dockerfile .;
+    docker run --name mtvmovsvelt -d -p 8090:80 mtvmovsvelte:arm32;
 fi
 
-if [ "$minusone" -eq 1 ]; then
-    # Build the Docker image
+if [ "$arch" = "aarch64" ]; then
+    docker build -t mtvmovsvelte:arm64 -f ./arm64/Dockerfile .;
+    docker run --name mtvmovsvelt -d -p 8090:80 mtvmovsvelte:arm64;
+fi
 
-    docker stop mtvmoviessvelte1;
-
-    docker rm mtvmoviessvelte1;
-
-    npm install;
-
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$1 .;
-
-    docker run --name mtvmoviessvelte$count -d -p 8090:80 mtvmoviessvelte:$1;
-
-    rm ./Dockerfile;
-
-    exit 0;
+if [ "$arch" = "x86_64" ]; then
+    docker build -t mtvmovsvelte:amd64 -f ./amd64/Dockerfile .;
+    docker run --name mtvmovsvelt -d -p 8090:80 mtvmovsvelte:amd64;
 fi
 
 
-if [ "$minusone" -gt 1 ]; then
-    # Build the Docker image
-
-    docker stop mtvmoviessvelte$minusone;
-
-    docker rm mtvmoviessvelte$minusone;
-
-    npm install;
-
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$1 .;
-
-    docker run --name mtvmoviessvelte$count -d -p 8090:80 mtvmoviessvelte:$1;
-
-    rm ./Dockerfile;
-
-    exit 0;
-fi
