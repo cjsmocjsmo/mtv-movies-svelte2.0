@@ -13,8 +13,13 @@ npm run build;
 arch=$(uname -m);
 
 if [ "$arch" = "armv7l" ]; then
-    docker build -t mtvmovsvelte:arm32 -f ./arm32/Dockerfile .;
-    docker run --name mtvmovsvelt -d -p 8090:80 mtvmovsvelte:arm32;
+    echo "This archatecture is not supported"
+    exit 1
+fi
+
+if [ "$arch" = "i386" ]; then
+    echo "This archatecture is not supported"
+    exit 1
 fi
 
 if [ "$arch" = "aarch64" ]; then
