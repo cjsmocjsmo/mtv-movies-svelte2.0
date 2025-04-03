@@ -38,6 +38,7 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/stalone"><p class="mov">Stalone</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/startrek"><p class="mov">Star Trek</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/starwars"><p class="mov">Star Wars</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/stooges"><p class="mov">Stooges</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/superheros"><p class="mov">Super Heros</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/tinkerbell"><p class="mov">Tinker Bell</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/tomcruize"><p class="mov">Tom Cruize</p></a>
