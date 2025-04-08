@@ -8,6 +8,7 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/buzz"><p class="mov">Buzz</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/cartoons"><p class="mov">Cartoons</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/charliebrown"><p class="mov">Charlie Brown</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/cheechandchong"><p class="mov">Cheech And Chong</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/chucknorris"><p class="mov">Chuck Norris</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/comedy"><p class="mov">Comedy</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/drama"><p class="mov">Drama</p></a>
