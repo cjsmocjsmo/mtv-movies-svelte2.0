@@ -1,101 +1,43 @@
 #!/bin/bash
+basepath=/home/pi/mtv-movies-svelte2.0;
 
-# Check if there are at least two arguments provided
-if [ "$#" -ne 2 ]; then
-    echo "You must enter exactly 2 arguments:\n\tarchitecture (32 or 64) and version (e.g., 0.0.1)"
-    exit 1
-fi
-
-# Check if the first argument is either 32 or 64
-# If not, print an error message and exit the script
-if [ "$1" != "32" ] && [ "$1" != "64" ]; then
-    echo "The first argument must be either 32 or 64"
-    exit 1
-fi
-
-# Check if the second argument is a valid version string
-# If not, print an error message and exit the script
-if ! echo "$2" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
-    echo "The second argument must be a valid version string (e.g., 0.0.1)"
-    exit 1
-fi
-
-echo "$1";
-echo "$2";
-
-if [ "$1" -eq 32 ]; then
-    cp -pvr ./RPI/32/Dockerfile ./Dockerfile;
-fi
-
-if [ "$1" -eq 64 ]; then
-    cp -pvr ./RPI/64/Dockerfile ./Dockerfile;
-fi
+builddir=$basepath/build;
 
 git pull https://github.com/cjsmocjsmo/mtv-movies-svelte2.0.git;
 
-# If all checks pass, print the arguments
+rm -rf $builddir;
 
-count1=$(echo "$2" | sed 's/\.//g' )
-count=$((count1+1-1))
-minusone=$((count-1))
+npm install;
 
-echo "Version: $2";
-echo "mtvmoviessvelte:$2";
-echo "mtvmoviessvelte$count";
-echo "mtvmoviessvelte$minusone";
+npm run build;
 
-if [ "$minusone" -eq 0 ]; then
-    
-    npm install --force;
+arch=$(uname -m);
 
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$2 .;
-    
-    docker run --name mtvmoviessvelte1 -d -p 8090:80 mtvmoviessvelte:$2;
-
-    rm ./Dockerfile;
-
-    exit 0;
+if [ "$arch" = "armv7l" ]; then
+    docker stop mtvmovsvelt_arm32;
+    docker rm mtvmovsvelt_arm32;
+    docker rmi mtvmovsvelte:arm32;
+    docker build -t mtvmovsvelte:arm32 -f ./arm32/Dockerfile .;
+    docker run --name mtvmovsvelt_arm32 -d -p 8090:80 mtvmovsvelte:arm32;
 fi
 
-if [ "$minusone" -eq 1 ]; then
-    # Build the Docker image
-
-    docker stop mtvmoviessvelte1;
-
-    docker rm mtvmoviessvelte1;
-
-    npm install --force;
-
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$2 .;
-
-    docker run --name mtvmoviessvelte$count -d -p 8090:80 mtvmoviessvelte:$2;
-
-    rm ./Dockerfile;
-
-    exit 0;
+if [ "$arch" = "aarch64" ]; then
+    docker stop mtvmovsvelt_arm64;
+    docker rm mtvmovsvelt_arm64;
+    docker rmi mtvmovsvelte:arm64;
+    docker build -t mtvmovsvelte:arm64 -f ./arm64/Dockerfile .;
+    docker run --name mtvmovsvelt_arm64 -d -p 8090:80 mtvmovsvelte:arm64;
 fi
 
+if [ "$arch" = "x86_64" ]; then
+    docker stop mtvmovsvelt_amd64;
+    docker rm mtvmovsvelt_amd64;
+    docker rmi mtvmovsvelte:amd64;
+    docker build -t mtvmovsvelte:amd64 -f ./amd64/Dockerfile .;
+    docker run --name mtvmovsvelt_amd64 -d -p 8090:80 mtvmovsvelte:amd64;
+fi
 
-if [ "$minusone" -gt 1 ]; then
-    # Build the Docker image
-
-    docker stop mtvmoviessvelte$minusone;
-
-    docker rm mtvmoviessvelte$minusone;
-
-    npm install --force;
-
-    npm run build;
-
-    docker build -t mtvmoviessvelte:$2 .;
-
-    docker run --name mtvmoviessvelte$count -d -p 8090:80 mtvmoviessvelte:$2;
-
-    rm ./Dockerfile;
-
-    exit 0;
+if [ "$arch" = "i386" ]; then
+    echo "This archatecture is not supported"
+    exit 1
 fi
