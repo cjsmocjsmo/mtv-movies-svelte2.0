@@ -13,7 +13,7 @@
 
 		ws.onopen = function () {
 			console.log('WebSocket connection opened: ' + wsuri);
-			ws.send(JSON.stringify({ command: 'misc' }));
+			ws.send(JSON.stringify({ "command": 'misc' }));
 		};
 
 		ws.onmessage = function (event) {
