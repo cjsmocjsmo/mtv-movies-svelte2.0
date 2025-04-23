@@ -31,11 +31,13 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/minions"><p class="mov">Minions</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/musicvids"><p class="mov">Music Vids</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/misc"><p class="mov">Misc</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/natrue"><p class="mov">Nature</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/nicolascage"><p class="mov">Nicolas Cage</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/oldies"><p class="mov">Oldies</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/panda"><p class="mov">Pandas</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/pirates"><p class="mov">Pirates</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/riddick"><p class="mov">Riddick</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/science"><p class="mov">Science</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/scifi"><p class="mov">SciFi</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/stalone"><p class="mov">Stalone</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/startrek"><p class="mov">Star Trek</p></a>
