@@ -50,12 +50,6 @@
 	<h1>Search</h1>
 	<input bind:value={search_phrase}  onkeydown={handleKeyDown} type="text" placeholder="Enter search term" />
 	<button class='movSearch' onclick={() => movSearch(search_phrase)} onkeydown={handleKeyDown} >Submit</button>
-	<div class="navList">
-		<a href="http://10.0.4.76:8090"><h3>Movies</h3></a>
-		<a href="http://10.0.4.76:8091"><h3>TvShows</h3></a>
-		<a href="http://10.0.4.76:9090"><h3>Music</h3></a>
-	</div>
-	
 	{#if result_data.length > 0}
 		<div class="movlist">
 		{#each result_data as mov}
@@ -73,7 +67,13 @@
 				</button>
 		{/each}
 		</div>
+		<div class="navList">
+			<a href="http://10.0.4.76:8090"><h3>Movies</h3></a>
+			<a href="http://10.0.4.76:8091"><h3>TvShows</h3></a>
+			<a href="http://10.0.4.76:9090"><h3>Music</h3></a>
+		</div>
 	{/if}
+	
 </main>
 
 <style>
