@@ -36,6 +36,7 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/oldies"><p class="mov">Oldies</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/panda"><p class="mov">Pandas</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/pirates"><p class="mov">Pirates</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/predator"><p class="mov">Predator</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/riddick"><p class="mov">Riddick</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/science"><p class="mov">Science</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/scifi"><p class="mov">SciFi</p></a>
