@@ -3,6 +3,7 @@
 <div class="movlist">
 	<a data-sveltekit-preload-data="tap" href="Movies/action"><p class="mov">Action</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/arnold"><p class="mov">Arnold</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/avatar"><p class="mov">Avatar</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/brucelee"><p class="mov">Bruce Lee</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/brucewillis"><p class="mov">Bruce Willis</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/buzz"><p class="mov">Buzz</p></a>

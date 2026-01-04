@@ -113,7 +113,10 @@
     <h3>Movies Size on Disk: {mov_size_on_disk} GB</h3>
     <h3>TV Shows Size on Disk: {tv_size_on_disk} GB</h3>
 	
-
+    <div class="update-div">
+        <button class="update-movs-btn">Update Movies</button>
+        <button class="update-tvs-btn">Update TVShows</button>
+    </div>
 </main>
 
 <style>
@@ -124,6 +127,27 @@
 		align-items: center;
 		flex: 0.6;
 	}
+
+    .update-div {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .update-movs-btn, .update-tvs-btn {
+        background-color: lightblue;
+        color: peru;
+        padding: 10px 20px;
+        border-color: darkblue;
+        border-width: 2px;
+        border-radius: 12px;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
 	
 
 	
