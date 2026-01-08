@@ -18,12 +18,15 @@
 		console.log("previous button clicked");
 	}
 
+	let isPlaying = false;
+
 	let play = () => {
 		const playcmd = JSON.stringify({ 'command': 'play' });
 		let ws1 = new WebSocket(wsuri);
 		ws1.onopen = function () {
 			ws1.send(playcmd);
 		};
+		isPlaying = true;
 		console.log("play button clicked");
 	}
 
@@ -33,6 +36,7 @@
 		ws1.onopen = function () {
 			ws1.send(pausecmd);
 		};
+		isPlaying = false;
 		console.log("pause button clicked");
 	}
 
@@ -79,30 +83,34 @@
 				</svg>
 			</div>
 				
-			<div
-				id="playBtn"
-				class="controlBtn"
-				onclick={play}
-				onkeypress={play}
-				onkeyup={play}
-				onkeydown={play}
-				role="button"
-				tabindex="0"
-			>
-				<p>Play</p>
-			</div>
-		
-			<div
-				id="pauseBtn"
-				class="controlBtn"
-				onclick={pause}
-				onkeypress={pause}
-				onkeyup={pause}
-				onkeydown={pause}
-				role="button"
-				tabindex="0"
-			>
-				<p>Pause</p>
+
+			<div style="position: relative; display: inline-block;">
+				<div
+					id="playBtn"
+					class="controlBtn"
+					onclick={play}
+					onkeypress={play}
+					onkeyup={play}
+					onkeydown={play}
+					role="button"
+					tabindex="0"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: {isPlaying ? 'none' : 'flex'}; align-items: center; justify-content: center;"
+				>
+					<p>Play</p>
+				</div>
+				<div
+					id="pauseBtn"
+					class="controlBtn"
+					onclick={pause}
+					onkeypress={pause}
+					onkeyup={pause}
+					onkeydown={pause}
+					role="button"
+					tabindex="0"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: {isPlaying ? 'flex' : 'none'}; align-items: center; justify-content: center;"
+				>
+					<p>Pause</p>
+				</div>
 			</div>
 		
 			<div
@@ -192,5 +200,11 @@
 		padding: 1em;
 		border-radius: 50%;
 		background-color: yellowgreen;
+	}
+	/* Prevent layout shift for play/pause button */
+	.controls > div[style*="position: relative"] {
+		width: 7em;
+		height: 3.5em;
+		position: relative;
 	}
 </style>
