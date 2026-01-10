@@ -45,8 +45,8 @@
 <main>
 	<BackArrow path="/" />
 	<h1>James Bond</h1>
-
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

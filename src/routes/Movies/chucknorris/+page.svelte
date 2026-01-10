@@ -46,6 +46,7 @@
 	<BackArrow path="/" />
 	<h1>Chuck Norris</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

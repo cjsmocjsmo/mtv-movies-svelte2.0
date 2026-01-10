@@ -1,16 +1,3 @@
-<!-- <script>
-	import { onMount } from 'svelte';
-	import BackArrow from '$lib/components/BackArrow.svelte';
-	import MovList from '$lib/components/MovList.svelte';
-	
-	let data = [];
-	onMount(async () => {
-		const addr = 'http://10.0.4.41:8080/kingsman';
-		const res = await fetch(addr);
-		data = await res.json();
-		data = data;
-	});
-</script> -->
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
@@ -18,7 +5,6 @@
 
 	let ws;
 	let data = $state([]);
-
 
 	function initWebSocket() {
 		const wsuri = "ws://10.0.4.41:8765";
@@ -55,10 +41,12 @@
 		}
 	});
 </script>
+
 <main>
 	<BackArrow path="/" />
 	<h1>Kingsman</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

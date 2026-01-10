@@ -1,4 +1,5 @@
 <script>
+	import { isPlaying } from '$lib/stores/isPlaying.js';
 	import './styles.css';
 	/**
 	 * @typedef {Object} Props
@@ -18,7 +19,7 @@
 		console.log("previous button clicked");
 	}
 
-	let isPlaying = false;
+	
 
 	let play = () => {
 		const playcmd = JSON.stringify({ 'command': 'play' });
@@ -26,7 +27,7 @@
 		ws1.onopen = function () {
 			ws1.send(playcmd);
 		};
-		isPlaying = true;
+		isPlaying.set(true);
 		console.log("play button clicked");
 	}
 
@@ -36,7 +37,7 @@
 		ws1.onopen = function () {
 			ws1.send(pausecmd);
 		};
-		isPlaying = false;
+		isPlaying.set(false);
 		console.log("pause button clicked");
 	}
 
@@ -46,6 +47,7 @@
 		ws1.onopen = function () {
 			ws1.send(stopcmd);
 		};
+		isPlaying.set(false);
 		console.log("stop button clicked");
 	}
 
@@ -84,20 +86,7 @@
 			</div>
 				
 
-			<div style="position: relative; display: inline-block;">
-				<div
-					id="playBtn"
-					class="controlBtn"
-					onclick={play}
-					onkeypress={play}
-					onkeyup={play}
-					onkeydown={play}
-					role="button"
-					tabindex="0"
-					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: {isPlaying ? 'none' : 'flex'}; align-items: center; justify-content: center;"
-				>
-					<p>Play</p>
-				</div>
+			{#if $isPlaying }
 				<div
 					id="pauseBtn"
 					class="controlBtn"
@@ -107,11 +96,24 @@
 					onkeydown={pause}
 					role="button"
 					tabindex="0"
-					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: {isPlaying ? 'flex' : 'none'}; align-items: center; justify-content: center;"
 				>
 					<p>Pause</p>
 				</div>
-			</div>
+			{:else }
+				<div
+					id="playBtn"
+					class="controlBtn"
+					onclick={play}
+					onkeypress={play}
+					onkeyup={play}
+					onkeydown={play}
+					role="button"
+					tabindex="0"
+				>
+					<p>Play</p>
+				</div>
+			
+			{/if}
 		
 			<div
 				id="stopBtn"
@@ -201,10 +203,5 @@
 		border-radius: 50%;
 		background-color: yellowgreen;
 	}
-	/* Prevent layout shift for play/pause button */
-	.controls > div[style*="position: relative"] {
-		width: 7em;
-		height: 3.5em;
-		position: relative;
-	}
+	/* No extra wrapper for play/pause, keep all buttons aligned */
 </style>

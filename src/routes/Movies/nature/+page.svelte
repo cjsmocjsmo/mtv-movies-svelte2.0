@@ -46,6 +46,7 @@
 	<BackArrow path="/" />
 	<h1>Nature</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

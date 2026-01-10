@@ -42,6 +42,7 @@
 	<BackArrow path="/" />
 	<h1>VanDam</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

@@ -45,6 +45,7 @@
 	<BackArrow path="/" />
 	<h1>Buzz</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

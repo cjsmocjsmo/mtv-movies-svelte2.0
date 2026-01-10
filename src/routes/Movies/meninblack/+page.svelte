@@ -46,6 +46,7 @@
 	<BackArrow path="/" />
 	<h1>Men In Black</h1>
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>

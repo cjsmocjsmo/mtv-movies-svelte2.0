@@ -45,8 +45,8 @@
 <main>
 	<BackArrow path="/" />
 	<h1>Indiana Jones</h1>
-
 	<MovList {data} />
+	<BackArrow path="/" />
 </main>
 
 <style>
