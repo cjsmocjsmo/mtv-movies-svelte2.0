@@ -1,6 +1,7 @@
 <script>
 	let { data } = $props();
 	import { isPlaying } from "$lib/stores/isPlaying.js";
+	import  LazyImage from "$lib/components/LazyImage.svelte"; 
 
 	function playmovie(movid) {
 		const wsuri = "ws://10.0.4.41:8765";
@@ -29,7 +30,7 @@
 				onkeydown={() => playmovie(mov.MovId)} 
 				aria-label={`Play movie: ${mov.Name}`} 
 			>
-				<img src={mov.HttpThumbPath} alt={mov.Name} />
+				<LazyImage src={mov.HttpThumbPath} alt={mov.Name} />
 			</button>
 		</div>
 	{/each}
@@ -42,10 +43,6 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
-	}
-	img {
-		margin: 1em;
-		border-radius: 7px;
 	}
 	button {
 		background-color: transparent;
