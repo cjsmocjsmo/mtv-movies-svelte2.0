@@ -3,12 +3,9 @@
 </script>
 
 <div class="fuck">
-    <a href="http://10.0.4.76:8090/"><h3 class="boo">Movies</h3></a>
     <a href="http://10.0.4.76:8091/"><h3 class="boo">TvShows</h3></a>
-    <a href="http://10.0.4.76:9090/"><h3 class="boo">Music</h3></a>
-</div>
-<div class="fuck">
     <a href="/Search"><h3 class="boo">Search</h3></a>
+    <a href="http://10.0.4.76:9090/"><h3 class="boo">Music</h3></a>
     <a href="/Stats"><h3 class="boo">Stats</h3></a>
 </div>
 
