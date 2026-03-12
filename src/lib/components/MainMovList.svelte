@@ -21,6 +21,7 @@
 	<a data-sveltekit-preload-data="tap" href="Movies/harrisonford"><p class="mov">HarrisonFord</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/harrypotter"><p class="mov">Harry Potter</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/hellboy"><p class="mov">HellBoy</p></a>
+	<a data-sveltekit-preload-data="tap" href="Movies/homevids"><p class="mov">Home Vids</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/indianajones"><p class="mov">Indiana Jones</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/jamesbond"><p class="mov">James Bond</p></a>
 	<a data-sveltekit-preload-data="tap" href="Movies/johnwayne"><p class="mov">John Wayne</p></a>
