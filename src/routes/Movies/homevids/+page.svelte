@@ -1,7 +1,7 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import BackArrow from '$lib/components/BackArrow.svelte';
-	import MovList from '$lib/components/MovList.svelte';
+	import VidList from '$lib/components/VidList.svelte';
 
 	let ws;
 	let data = $state([]);
@@ -44,9 +44,7 @@
 <main>
 	<BackArrow path="/" />
 	<h1>Home Vids</h1>
-	{#each data as d }
-		<p>{d.name}</p>
-	{/each}
+	<VidList {data} />
 	<BackArrow path="/" />
 </main>
 
@@ -58,8 +56,8 @@
 		align-items: center;
 		flex: 0.6;
 	}
-	p {
+	/* p {
 		font-size: 1.5rem;
 		margin: 0.5rem 0;
-	}
+	} */
 </style>
