@@ -8,6 +8,8 @@
     let tv_count = $state(0);
     let mov_size_on_disk = $state(0);
     let tv_size_on_disk = $state(0);
+    let mov_updates = $state(false);
+    let tv_updates = $state(false);
 
     const wsuri = "ws://10.0.4.41:8765";
 
@@ -87,6 +89,44 @@
         };
     }
 
+    function checkForMovUpdates() {
+        let ws = new WebSocket(wsuri);
+        console.log("WebSocket connection created: " + wsuri);
+
+        ws.onopen = function() {
+            console.log("WebSocket connection opened: " + wsuri);
+            ws.send(JSON.stringify({ "command": "checkformovupdates" }));
+        };
+
+        ws.onmessage = function(event) {
+            mov_updates = JSON.parse(event.data);
+            console.log("Message received from server: ", mov_updates);
+        };
+
+        ws.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+    }
+
+    function checkForTvUpdates() {
+        let ws = new WebSocket(wsuri);
+        console.log("WebSocket connection created: " + wsuri);
+
+        ws.onopen = function() {
+            console.log("WebSocket connection opened: " + wsuri);
+            ws.send(JSON.stringify({ "command": "checkfortvupdates" }));
+        };
+
+        ws.onmessage = function(event) {
+            tv_updates = JSON.parse(event.data);
+            console.log("Message received from server: ", tv_updates);
+        };
+
+        ws.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+    }
+
     onMount(async () => {
         console.log("Component mounted");
         await movCount();
@@ -114,8 +154,8 @@
     <h3>TV Shows Size on Disk: {tv_size_on_disk} GB</h3>
 	
     <div class="update-div">
-        <button class="update-movs-btn">Update Movies</button>
-        <button class="update-tvs-btn">Update TVShows</button>
+        <button class="update-movs-btn" onclick={checkForMovUpdates}>Check For Mov Updates</button>
+        <button class="update-tvs-btn" onclick={checkForTvUpdates}>Check For TV Updates</button>
     </div>
 </main>
 

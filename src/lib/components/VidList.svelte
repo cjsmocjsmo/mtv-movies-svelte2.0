@@ -40,11 +40,13 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
+		justify-content: left;
+		align-items: left;
 	}
 	button {
 		background-color: transparent;
 		border: none;
+		margin-top: .5em;
+		margin-bottom: .5em;
 	}
 </style>
