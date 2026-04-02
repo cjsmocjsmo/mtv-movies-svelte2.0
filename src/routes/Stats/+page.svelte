@@ -155,8 +155,23 @@
 	
     <div class="update-div">
         <button class="update-movs-btn" onclick={checkForMovUpdates}>Check For Mov Updates</button>
+        {#if mov_updates}
+            {#each mov_updates as update}
+                <p>{update}</p>
+            {/each}
+        {:else}
+            <!-- <p>No movie updates available.</p> -->
+        {/if}
         <button class="update-tvs-btn" onclick={checkForTvUpdates}>Check For TV Updates</button>
+        {#if tv_updates}
+            {#each tv_updates as update}
+                <p>{update}</p>
+            {/each}
+        {:else}
+            <!-- <p>No TV updates available.</p> -->
+        {/if}
     </div>
+
 </main>
 
 <style>
