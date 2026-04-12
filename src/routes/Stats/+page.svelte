@@ -133,6 +133,8 @@
         await tvcount();
         await movSizeOnDisk();
         await tvSizeOnDisk();
+        await checkForMovUpdates();
+        await checkForTvUpdates();
     });
 
 	onDestroy(() => {
@@ -154,21 +156,21 @@
     <h3>TV Shows Size on Disk: {tv_size_on_disk} GB</h3>
 	
     <div class="update-div">
-        <button class="update-movs-btn" onclick={checkForMovUpdates}>Check For Mov Updates</button>
-        {#if mov_updates}
-            {#each mov_updates as update}
-                <p>{update}</p>
-            {/each}
+        <!-- <button class="update-movs-btn" onclick={checkForMovUpdates}>Check For Mov Updates</button> -->
+        {#if mov_updates.length == 0}
+            <p>No movie updates available.</p>
         {:else}
-            <!-- <p>No movie updates available.</p> -->
+            {#each mov_updates as mupdate}
+                <p>{mupdate}</p>
+            {/each}
         {/if}
-        <button class="update-tvs-btn" onclick={checkForTvUpdates}>Check For TV Updates</button>
-        {#if tv_updates}
-            {#each tv_updates as update}
-                <p>{update}</p>
-            {/each}
+        <!-- <button class="update-tvs-btn" onclick={checkForTvUpdates}>Check For TV Updates</button> -->
+        {#if tv_updates.length == 0}
+            <p>No TV updates available.</p>
         {:else}
-            <!-- <p>No TV updates available.</p> -->
+            {#each tv_updates as tvupdate}
+                <p>{tvupdate}</p>
+            {/each}
         {/if}
     </div>
 
@@ -191,19 +193,4 @@
         justify-content: center;
 
     }
-
-    .update-movs-btn, .update-tvs-btn {
-        background-color: lightblue;
-        color: peru;
-        padding: 10px 20px;
-        border-color: darkblue;
-        border-width: 2px;
-        border-radius: 12px;
-        font-size: 16px;
-        margin: 0 10px;
-        cursor: pointer;
-    }
-	
-
-	
 </style>
