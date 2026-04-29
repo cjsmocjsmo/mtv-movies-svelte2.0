@@ -19,8 +19,6 @@
 		console.log("previous button clicked");
 	}
 
-	
-
 	let play = () => {
 		const playcmd = JSON.stringify({ 'command': 'play' });
 		let ws1 = new WebSocket(wsuri);
