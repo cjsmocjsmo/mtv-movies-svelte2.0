@@ -127,6 +127,44 @@
         };
     }
 
+    function update_mov() {
+        let ws = new WebSocket(wsuri);
+        console.log("WebSocket connection created: " + wsuri);
+
+        ws.onopen = function() {
+            console.log("WebSocket connection opened: " + wsuri);
+            ws.send(JSON.stringify({ "command": "updatemovs" }));
+        };
+
+        ws.onmessage = function(event) {
+            mov_updates = JSON.parse(event.data);
+            console.log("Message received from server: ", mov_updates);
+        };
+
+        ws.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+    }
+
+    function update_tv() {
+        let ws = new WebSocket(wsuri);
+        console.log("WebSocket connection created: " + wsuri);
+
+        ws.onopen = function() {
+            console.log("WebSocket connection opened: " + wsuri);
+            ws.send(JSON.stringify({ "command": "updatetvs" }));
+        };
+
+        ws.onmessage = function(event) {
+            tv_updates = JSON.parse(event.data);
+            console.log("Message received from server: ", tv_updates);
+        };
+
+        ws.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+    }
+
     onMount(async () => {
         console.log("Component mounted");
         await movCount();
@@ -156,18 +194,19 @@
     <h3>TV Shows Size on Disk: {tv_size_on_disk} GB</h3>
 	
     <div class="update-div">
-        <!-- <button class="update-movs-btn" onclick={checkForMovUpdates}>Check For Mov Updates</button> -->
         {#if mov_updates.length == 0}
             <p>No movie updates available.</p>
         {:else}
+            <button class="update-movs-btn" onclick={update_mov}>Update Movies</button>
             {#each mov_updates as mupdate}
                 <p>{mupdate}</p>
             {/each}
         {/if}
-        <!-- <button class="update-tvs-btn" onclick={checkForTvUpdates}>Check For TV Updates</button> -->
+        
         {#if tv_updates.length == 0}
             <p>No TV updates available.</p>
         {:else}
+            <button class="update-tvs-btn" onclick={update_tv}>Update TV Shows</button>
             {#each tv_updates as tvupdate}
                 <p>{tvupdate}</p>
             {/each}
@@ -192,5 +231,15 @@
         align-items: center;
         justify-content: center;
 
+    }
+
+    .update-movs-btn, .update-tvs-btn {
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
     }
 </style>
